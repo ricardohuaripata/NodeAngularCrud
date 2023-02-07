@@ -1,0 +1,56 @@
+
+<div class="container">
+    <div class="row mt-2">
+    
+        <div class="col-lg-4 offset-lg-4">
+      
+          <div class="card text-white bg-secondary mb-3" style="max-width: 25rem">
+            <div class="card-header text-center">Añadir producto</div>
+            <div class="card-body">
+      
+              <form [formGroup]="form" (ngSubmit)="addProduct()">
+
+                  <input formControlName="nombre" type="text" class="form-control" placeholder="Introducir nombre">
+                  <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+                    El campo Nombre es <strong>requerido</strong>
+                  </span>
+
+                  <input formControlName="descripcion" type="text" class="form-control mt-2" placeholder="Introducir descripcion">
+                  <span *ngIf="form.get('descripcion')?.hasError('required') && form.get('descripcion')?.touched">
+                    El campo Descripcion es <strong>requerido</strong>
+                  </span>
+
+                  <input formControlName="precio" type="number" class="form-control mt-2" placeholder="Introducir precio">
+                  <span *ngIf="form.get('precio')?.hasError('required') && form.get('precio')?.touched">
+                    El campo Precio es <strong>requerido</strong>
+                  </span>
+
+                  <input formControlName="existencias" type="number" class="form-control mt-2" placeholder="Introducir existencias">
+                  <span *ngIf="form.get('existencias')?.hasError('required') && form.get('existencias')?.touched">
+                    El campo Existencias es <strong>requerido</strong>
+                  </span>
+
+                  <div class="row mt-2 text-center">
+      
+                      <div class="col-lg-6">
+                          <button type="button" class="btn btn-secondary" routerLink="/productos">Cancelar</button>
+                      </div>
+      
+                      <div class="col-lg-6">
+                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Aceptar</button>
+                       </div>
+      
+                  </div>
+              </form>
+      
+            </div>
+          </div>
+          
+        </div>
+      
+      </div>
+
+</div>
+
+
+

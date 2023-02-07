@@ -1,0 +1,16 @@
+
+Frontend: Angular
+
+Backend: Node, Express, Typescript, Sequelize, MySQL
+
+instalar nodemon de manera globlal: npm install -g nodemon
+
+installar typescript de manera global: npm install -g typescript
+
+inicializar typescript: tsc --init
+
+ejecutar typescript automaticamente: tsc --watch
+
+prepar entorno de trabajo backend: npm i express dotenv cors sequelize mysql2
+
+para IMPORTAR express: npm i --save-dev @types/express

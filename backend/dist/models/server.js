@@ -13,10 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+//importante usar cors para la conexion con el frontend
+const cors_1 = __importDefault(require("cors"));
 const producto_1 = __importDefault(require("../routes/producto"));
 const connection_1 = __importDefault(require("../database/connection"));
 class Server {
     constructor() {
+        // todas las funcionas definidas para esta clase deberan llamarse en su constructor,
+        // para que se ejecuten cuando la clase Server sea instanciada en "backend/src/index.ts"
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '3000';
         this.listen();
@@ -24,22 +28,31 @@ class Server {
         this.routes();
         this.dbConexion();
     }
+    //funcion para establecer el puerto del servidor
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Server listening on port ${this.port}`);
+            console.log(`Server listening on port ` + this.port);
         });
     }
+    //funcion donde asignamos las rutas del servidor
     routes() {
+        // localhost:3000
         this.app.get('/', (req, res) => {
             res.json({
                 mensaje: "Hola mundo"
             });
         });
+        // localhost:3000/api/productos
+        // si se accede a esa ruta, se llama a la clase routerProducto, la cual contiene otras rutas para get,post,delete y put
         this.app.use('/api/productos', producto_1.default);
     }
     midlewares() {
+        // PARSEAR EL BODY EN JSON
         this.app.use(express_1.default.json());
+        //CORS
+        this.app.use((0, cors_1.default)());
     }
+    //funcion para comprobar la conexion con la base de datos
     dbConexion() {
         return __awaiter(this, void 0, void 0, function* () {
             try {

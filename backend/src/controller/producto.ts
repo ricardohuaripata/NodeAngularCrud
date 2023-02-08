@@ -1,51 +1,74 @@
-import { Request, Response } from "express"
+import { Request, Response } from "express";
+import Producto from '../models/producto';
 
-export const getProductos = (req: Request, res: Response) => {
-
-    res.json({
-        message: "get productos"
-
-    })
-
-}
-
-export const getProducto = (req: Request, res: Response) => {
-
-    res.json({
-        message: "get a producto",
-        id: req.params.id
-
-    })
+export const getProductos = async (req: Request, res: Response) => {
+    
+    const listaProductos = await Producto.findAll();
+    // {listaProductos} :(
+    res.json(listaProductos);
 
 }
 
-export const deleteProducto = (req: Request, res: Response) => {
+export const getProducto = async (req: Request, res: Response) => {
 
-    res.json({
-        message: "delete a producto",
-        id: req.params.id
+    const id = req.params.id;
+    const product = await Producto.findByPk(id);
 
-    })
-
-}
-
-export const postProducto = (req: Request, res: Response) => {
-
-    res.json({
-        message: "post a producto",
-        body: req.body
-
-    })
+    if(product) {
+        res.json(product);
+    } else {
+        res.status(404).json({mensaje: 'Producto no encontrado con el id ' + id});
+    }
 
 }
 
-export const putProducto = (req: Request, res: Response) => {
+export const deleteProducto = async (req: Request, res: Response) => {
 
-    res.json({
-        message: "post a producto",
-        id: req.params.id,
-        body: req.body
+    const id = req.params.id;
+    const product = await Producto.findByPk(id);
 
-    })
+    if(product) {
+        await product.destroy();
+        res.json({mensaje: 'Producto eliminado con el id ' + id});
+    } else {
+        res.status(404).json({mensaje: 'Producto no encontrado con el id ' + id});
+    }
+
+}
+
+export const postProducto = async (req: Request, res: Response) => {
+
+    const body = req.body;
+
+    try {
+        const nuevoProducto = await Producto.create(body);
+        res.json(nuevoProducto);
+
+    } catch(error) {
+        res.json({mensaje: 'Error al insertar el producto'});
+    }
+
+}
+
+export const putProducto = async (req: Request, res: Response) => {
+
+    const body = req.body;
+    const id = req.params.id;
+    const product = await Producto.findByPk(id);
+
+    if(product) {
+
+        try {
+            await product.update(body);
+            res.json({mensaje: 'Producto actualizado con el id '+ id});
+
+        } catch(error) {
+            res.json({mensaje: 'Error al actualizar el producto'});
+     
+        }
+        
+    } else {
+        res.status(404).json({mensaje: 'Producto no encontrado con el id ' + id});
+    }
 
 }

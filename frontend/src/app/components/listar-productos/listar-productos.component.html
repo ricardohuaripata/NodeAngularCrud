@@ -10,23 +10,29 @@
     <table class="table table-hover">
         <thead>
           <tr>
+            <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Precio</th>
             <th scope="col">Existencias</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
           </tr>
         </thead>
         <tbody>
 
           <tr *ngFor="let item of listaProductos" class="table-active">
+            <td>{{ item.id }}</td>
             <td>{{ item.nombre }}</td>
             <td>{{ item.descripcion }}</td>
             <td>{{ item.precio }}</td>
             <td>{{ item.existencias }}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" routerLink="/productos/edit/{{ item.id }}">Editar</button>
+                
+            </td>
+            <td>
                 <button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
-
             </td>
             
           </tr>

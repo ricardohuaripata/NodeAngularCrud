@@ -1,7 +1,7 @@
-
 Frontend: Angular
-
 Backend: Node, Express, Typescript, Sequelize, MySQL
+
+
 
 instalar nodemon de manera globlal: npm install -g nodemon
 
@@ -10,7 +10,17 @@ installar typescript de manera global: npm install -g typescript
 inicializar typescript: tsc --init
 
 ejecutar typescript automaticamente: tsc --watch
+ejecutar protecto con nodemon: nodemon dist/index.js
 
 prepar entorno de trabajo backend: npm i express dotenv cors sequelize mysql2
 
 para IMPORTAR express: npm i --save-dev @types/express
+
+
+generar archivos para angular (
+	crear componente: ng g c components/navbar
+	crear servicio: ng g s services/producto
+	crear archivo para variables de entorno: ng g environments
+)
+
+instalar cors desde backend(necesario para la conexion con el frontend): npm i --save-dev @types/cors - import cors from 'cors';

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 
 //Modulos
 import { ReactiveFormsModule } from '@angular/forms';
+// modulo necesario para la conexion con el backend
+import { HttpClientModule } from '@angular/common/http';
 
 //Componentes
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -26,7 +28,9 @@ import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // modulo necesario para la conexion con el backend
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,6 +15,7 @@ import { ListarProductosComponent } from './components/listar-productos/listar-p
 import { AddEditProductComponent } from './components/add-edit-product/add-edit-product.component';
 import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
 import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.component';
+import { SubirPiezaComponent } from './components/subir-pieza/subir-pieza.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.
     ListarProductosComponent,
     AddEditProductComponent,
     PaginaNoEncontradaComponent,
-    PaginaInicioComponent
+    PaginaInicioComponent,
+    SubirPiezaComponent
   ],
   imports: [
     BrowserModule,

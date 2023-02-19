@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { getProductos, getProducto, deleteProducto, postProducto, putProducto } from '../controller/producto';
 
+// http://localhost:3000/api/productos/
+
 const router = Router();
 
 router.get('/', getProductos),

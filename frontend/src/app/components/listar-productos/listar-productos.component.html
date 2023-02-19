@@ -1,4 +1,8 @@
-<div class="container">
+<!-- SI AUN ESTA CARGANDO -->
+<app-progress-bar *ngIf="loading==true"></app-progress-bar>
+
+<!-- SI YA NO ESTA CARGANDO -->
+<div *ngIf="loading==false" class="container">
     
     <div class="titulo">
         <h4>Lista de productos</h4>
@@ -25,14 +29,15 @@
             <td>{{ item.id }}</td>
             <td>{{ item.nombre }}</td>
             <td>{{ item.descripcion }}</td>
-            <td>{{ item.precio }}</td>
+            <td>{{ item.precio | currency }}</td>
             <td>{{ item.existencias }}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" routerLink="/productos/edit/{{ item.id }}">Editar</button>
                 
             </td>
             <td>
-                <button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+              <!--VAL0R ID ESTA DEFINIDO COMO OPCIONAL POR TANTO ES NECESARIO AÑADIR ! AL FINAL -->
+                <button (click)="eliminarProducto(item.id!)" type="button" class="btn btn-secondary btn-sm">Eliminar</button>
             </td>
             
           </tr>

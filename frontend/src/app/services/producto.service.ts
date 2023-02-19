@@ -6,25 +6,26 @@ import { Producto } from '../interfaces/producto';
 
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class ProductoService {
-  
   private serverUrl: string;
   private apiUrl: string;
 
   constructor(private http: HttpClient) {
     // URL del servidor backend
     this.serverUrl = 'http://localhost:3000/';
-    this.apiUrl = 'api/productos/'
-   }
+    this.apiUrl = 'api/productos/';
+  }
 
-   getListProducts(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(this.serverUrl + this.apiUrl)
-   }
+  getListProducts(): Observable<Producto[]> {
+    return this.http.get<Producto[]>(this.serverUrl + this.apiUrl);
+  }
 
-
+  deleteProductById(id: number): Observable<void> {
+    // ejemplo: http://localhost:3000/api/productos/1
+    return this.http.delete<void>(this.serverUrl + this.apiUrl + id);
+  }
 }

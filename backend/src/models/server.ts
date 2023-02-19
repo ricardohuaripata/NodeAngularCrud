@@ -45,7 +45,7 @@ class Server {
         // PARSEAR EL BODY EN JSON
         this.app.use(express.json());
 
-        //CORS
+        // SOLUCIONAR PROBLEMA CORS
         this.app.use(cors());
     }
 

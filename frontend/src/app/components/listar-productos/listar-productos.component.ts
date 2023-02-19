@@ -11,6 +11,8 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ListarProductosComponent implements OnInit {
 
   listaProductos: Producto[] = [];
+  // BARRA DE CARGA
+  loading: boolean = false;
 
   constructor(private _productoService: ProductoService) {}
 
@@ -19,9 +21,24 @@ export class ListarProductosComponent implements OnInit {
   }
 
   obtenerListaProductos() {
-    
-    this._productoService.getListProducts().subscribe((data: Producto[]) => {
-      this.listaProductos = data;
+    this.loading = true;
+
+    setTimeout(() => {
+
+      this._productoService.getListProducts().subscribe((data: Producto[]) => {
+        this.listaProductos = data;
+        this.loading = false;
+
+      });
+      
+    }, 500);
+
+  }
+
+  eliminarProducto(id : number) {
+    this._productoService.deleteProductById(id).subscribe(() =>{
+      // cuando se elimina el productos se actualiza la pagina con la lista de productos
+      this.obtenerListaProductos();
     });
 
   }

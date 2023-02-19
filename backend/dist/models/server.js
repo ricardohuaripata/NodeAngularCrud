@@ -49,7 +49,7 @@ class Server {
     midlewares() {
         // PARSEAR EL BODY EN JSON
         this.app.use(express_1.default.json());
-        //CORS
+        // SOLUCIONAR PROBLEMA CORS
         this.app.use((0, cors_1.default)());
     }
     //funcion para comprobar la conexion con la base de datos

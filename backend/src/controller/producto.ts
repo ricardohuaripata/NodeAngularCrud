@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Producto from '../models/producto';
 import { Op } from "sequelize";
 
+// GET
 export const getProductos = async (req: Request, res: Response) => {
     
     const listaProductos = await Producto.findAll();
@@ -9,7 +10,7 @@ export const getProductos = async (req: Request, res: Response) => {
     res.json(listaProductos);
 
 }
-
+// GET BY ID
 export const getProducto = async (req: Request, res: Response) => {
 
     const id = req.params.id;
@@ -22,7 +23,7 @@ export const getProducto = async (req: Request, res: Response) => {
     }
 
 }
-
+// GET BY NAME
 export const getProductosByName = async (req: Request, res: Response) => {
     let nombre = req.params.nombre || ''; //  si se llama la ruta sin proporcionar un nombre, el valor por defecto sera una cadena vacia
     const esNombreValido = /^[a-zA-Z0-9\s]+$/.test(nombre.trim()); // expresión regular para validar que nombre solo contiene letras, números y espacios
@@ -46,7 +47,7 @@ export const getProductosByName = async (req: Request, res: Response) => {
       res.status(500).json({ mensaje: 'Error al buscar productos.' });
     }
 };
-
+// DELETE
 export const deleteProducto = async (req: Request, res: Response) => {
 
     const id = req.params.id;
@@ -60,7 +61,7 @@ export const deleteProducto = async (req: Request, res: Response) => {
     }
 
 }
-
+// POST
 export const postProducto = async (req: Request, res: Response) => {
 
     const body = req.body;
@@ -75,6 +76,7 @@ export const postProducto = async (req: Request, res: Response) => {
 
 }
 
+// PUT
 export const putProducto = async (req: Request, res: Response) => {
 
     const body = req.body;

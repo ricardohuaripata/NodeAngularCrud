@@ -42,7 +42,7 @@ export class ListarProductosComponent implements OnInit {
       // cuando se elimina el productos se actualiza la pagina con la lista de productos
       this.obtenerListaProductos();
       // mensaje de aviso usando la libreria de toastr
-      this.toastr.info('El producto con id ' + id + " ha sido eliminado de la base de datos", 'Producto eliminado');
+      this.toastr.warning('El producto con id ' + id + " ha sido eliminado de la base de datos", 'Producto eliminado');
     });
 
   }

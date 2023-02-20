@@ -1,11 +1,12 @@
+<app-progress-bar *ngIf="loading==true"></app-progress-bar>
 
-<div class="container">
-    <div class="row mt-2">
+<div class="container" *ngIf="loading==false">
+    <div class="row mt-5">
     
         <div class="col-lg-4 offset-lg-4">
       
-          <div class="card text-white bg-secondary mb-3" style="max-width: 25rem">
-            <div class="card-header text-center">Añadir producto</div>
+          <div class="card text-black bg-secondary mb-3">
+            <div class="card-header text-center">{{ accion }} producto</div>
             <div class="card-body">
       
               <form [formGroup]="form" (ngSubmit)="addProduct()">
@@ -32,12 +33,12 @@
 
                   <div class="row mt-2 text-center">
       
-                      <div class="col-lg-6">
-                          <button type="button" class="btn btn-secondary" routerLink="/productos">Cancelar</button>
+                      <div class="col-lg-6 mt-2">
+                          <button type="button" class="btn btn-outline-danger" routerLink="/productos">Cancelar</button>
                       </div>
       
-                      <div class="col-lg-6">
-                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Aceptar</button>
+                      <div class="col-lg-6 mt-2">
+                          <button type="submit" class="btn btn-outline-primary" [disabled]="form.invalid">Aceptar</button>
                        </div>
       
                   </div>

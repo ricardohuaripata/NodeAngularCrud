@@ -28,4 +28,19 @@ export class ProductoService {
     // ejemplo: http://localhost:3000/api/productos/1
     return this.http.delete<void>(this.serverUrl + this.apiUrl + id);
   }
+
+  saveProduct(product: Producto): Observable<void> {
+    return this.http.post<void>(this.serverUrl + this.apiUrl, product);
+
+  }
+
+  getProduct(id: number): Observable<Producto> {
+    return this.http.get<Producto>(this.serverUrl + this.apiUrl + id);
+  }
+
+  updateProduct(id: number, product: Producto): Observable<void> {
+    return this.http.put<void>(this.serverUrl + this.apiUrl + id, product);
+  }
+
+
 }

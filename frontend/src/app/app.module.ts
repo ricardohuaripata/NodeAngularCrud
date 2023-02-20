@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,8 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 // modulo necesario para la conexion con el backend
 import { HttpClientModule } from '@angular/common/http';
+// modulo para toastr
+import { ToastrModule } from 'ngx-toastr';
 
 //Componentes
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -32,7 +35,14 @@ import { ProgressBarComponent } from './shared/progress-bar/progress-bar.compone
     AppRoutingModule,
     ReactiveFormsModule,
     // modulo necesario para la conexion con el backend
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    // importar y configurar libreria toastr
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

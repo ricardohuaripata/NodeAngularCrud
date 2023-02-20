@@ -1,5 +1,7 @@
 # node-angular-crud
 
+CRUD WEB APP
+
 FRONTEND: Angular
 
-Backend: Node, Express, Typescript, Sequelize, MySQL
+BACKEND: Node, Express, Typescript, Sequelize, MySQL

@@ -26,7 +26,7 @@ export class AddEditProductComponent implements OnInit{
       precio: [null, Validators.required],
       existencias: [null, Validators.required]
     }),
-    // para capturar id en caso de que se acceda mediante EDITAR
+    // para capturar id de la URL en caso de que se acceda mediante EDITAR
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
 
   }
@@ -43,16 +43,22 @@ export class AddEditProductComponent implements OnInit{
   obtenerProducto(id: number) {
 
     this.loading = true;
-    this._productService.getProduct(id).subscribe((data: Producto) => {
+    // BARRA DE CARGA
+    setTimeout(() => {
+
+      this._productService.getProduct(id).subscribe((data: Producto) => {
+  
+        this.form.setValue({
+          nombre: data.nombre,
+          descripcion: data.descripcion,
+          precio: data.precio,
+          existencias:  data.existencias
+        })
+      });
+
       this.loading = false;
 
-      this.form.setValue({
-        nombre: data.nombre,
-        descripcion: data.descripcion,
-        precio: data.precio,
-        existencias:  data.existencias
-      })
-    });
+    }, 500);
 
   }
 
@@ -65,12 +71,10 @@ export class AddEditProductComponent implements OnInit{
       existencias: this.form.value.existencias
     };
 
-    this.loading = true;
 
     if(this.id != 0) {
       // EDITAR
-      // le asignamos el id ya que en el formulario no se esta asignando
-      producto.id = this.id;
+      producto.id = this.id; // le asignamos el id ya que en el formulario no se esta asignando
       this._productService.updateProduct(this.id, producto).subscribe(() => {
         this.toastr.info('El producto '+ producto.nombre + ' ha sido actualizado', 'Producto actualizado');
       });
@@ -83,9 +87,7 @@ export class AddEditProductComponent implements OnInit{
 
     }
 
-    this.loading = false;
     this.router.navigate(['/productos']);
-
 
   }
 

@@ -6,6 +6,7 @@ const producto_1 = require("../controller/producto");
 const router = (0, express_1.Router)();
 router.get('/', producto_1.getProductos),
     router.get('/:id', producto_1.getProducto),
+    router.get('/namelike/:nombre', producto_1.getProductosByName),
     router.delete('/:id', producto_1.deleteProducto),
     router.post('/', producto_1.postProducto),
     router.put('/:id', producto_1.putProducto);

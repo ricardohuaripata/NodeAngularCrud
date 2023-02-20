@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Producto from '../models/producto';
+import { Op } from "sequelize";
 
 export const getProductos = async (req: Request, res: Response) => {
     
@@ -21,6 +22,24 @@ export const getProducto = async (req: Request, res: Response) => {
     }
 
 }
+
+export const getProductosByName = async (req: Request, res: Response) => {
+    const nombre = req.params.nombre;
+  
+    try {
+      const productos = await Producto.findAll({
+        where: {
+          nombre: {
+            [Op.like]: '%' + nombre + '%'
+          }
+        }
+      });
+  
+      res.json(productos);
+    } catch (error) {
+      res.status(500).json({ mensaje: 'Error al buscar productos.' });
+    }
+  };
 
 export const deleteProducto = async (req: Request, res: Response) => {
 

@@ -12,8 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.putProducto = exports.postProducto = exports.deleteProducto = exports.getProducto = exports.getProductos = void 0;
+exports.putProducto = exports.postProducto = exports.deleteProducto = exports.getProductosByName = exports.getProducto = exports.getProductos = void 0;
 const producto_1 = __importDefault(require("../models/producto"));
+const sequelize_1 = require("sequelize");
 const getProductos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const listaProductos = yield producto_1.default.findAll();
     // {listaProductos} :(
@@ -31,6 +32,23 @@ const getProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getProducto = getProducto;
+const getProductosByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const nombre = req.params.nombre;
+    try {
+        const productos = yield producto_1.default.findAll({
+            where: {
+                nombre: {
+                    [sequelize_1.Op.like]: '%' + nombre + '%'
+                }
+            }
+        });
+        res.json(productos);
+    }
+    catch (error) {
+        res.status(500).json({ mensaje: 'Error al buscar productos.' });
+    }
+});
+exports.getProductosByName = getProductosByName;
 const deleteProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const product = yield producto_1.default.findByPk(id);

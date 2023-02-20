@@ -24,22 +24,28 @@ export const getProducto = async (req: Request, res: Response) => {
 }
 
 export const getProductosByName = async (req: Request, res: Response) => {
-    const nombre = req.params.nombre;
-  
+    let nombre = req.params.nombre || ''; //  si se llama la ruta sin proporcionar un nombre, el valor por defecto sera una cadena vacia
+    const esNombreValido = /^[a-zA-Z0-9\s]+$/.test(nombre.trim()); // expresión regular para validar que nombre solo contiene letras, números y espacios
+
     try {
-      const productos = await Producto.findAll({
-        where: {
-          nombre: {
-            [Op.like]: '%' + nombre + '%'
+      let productos;
+      if (esNombreValido && nombre.trim() !== '') { // Se agrega un chequeo para evitar que se busquen espacios vacíos
+        productos = await Producto.findAll({
+          where: {
+            nombre: {
+              [Op.like]: '%' + nombre.trim() + '%'
+            }
           }
-        }
-      });
+        });
+      } else {
+        productos = await Producto.findAll();
+      }
   
       res.json(productos);
     } catch (error) {
       res.status(500).json({ mensaje: 'Error al buscar productos.' });
     }
-  };
+};
 
 export const deleteProducto = async (req: Request, res: Response) => {
 

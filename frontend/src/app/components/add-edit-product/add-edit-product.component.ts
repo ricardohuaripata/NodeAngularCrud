@@ -47,7 +47,7 @@ export class AddEditProductComponent implements OnInit{
     setTimeout(() => {
 
       this._productService.getProduct(id).subscribe((data: Producto) => {
-  
+        // pintamos en el formulario la informacion del producto seleccionado
         this.form.setValue({
           nombre: data.nombre,
           descripcion: data.descripcion,
@@ -61,7 +61,7 @@ export class AddEditProductComponent implements OnInit{
     }, 500);
 
   }
-
+  // FUNCION TANTO PARA AÑADIR PRODUCTO COMO PARA EDITAR PRODUCTO
   addProduct() {
     // creamos un objeto con los datos del formulario
     const producto : Producto = {

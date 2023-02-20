@@ -19,6 +19,7 @@ import { AddEditProductComponent } from './components/add-edit-product/add-edit-
 import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
 import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.component';
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
+import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resultado-busqueda.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProgressBarComponent } from './shared/progress-bar/progress-bar.compone
     PaginaNoEncontradaComponent,
     PaginaInicioComponent,
     ProgressBarComponent,
+    ResultadoBusquedaComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,8 +23,8 @@
         </li>
 
       </ul>
-      <form class="d-flex">
-        <input
+      <form class="d-flex" [formGroup]="form" (ngSubmit)="buscarProductos()">
+        <input formControlName="buscar"
           class="form-control me-sm-2"
           type="search"
           placeholder="Buscar"

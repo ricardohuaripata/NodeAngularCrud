@@ -33,15 +33,22 @@ const getProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getProducto = getProducto;
 const getProductosByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const nombre = req.params.nombre;
+    let nombre = req.params.nombre || ''; //  si se llama la ruta sin proporcionar un nombre, el valor por defecto sera una cadena vacia
+    const esNombreValido = /^[a-zA-Z0-9\s]+$/.test(nombre.trim()); // expresión regular para validar que nombre solo contiene letras, números y espacios
     try {
-        const productos = yield producto_1.default.findAll({
-            where: {
-                nombre: {
-                    [sequelize_1.Op.like]: '%' + nombre + '%'
+        let productos;
+        if (esNombreValido && nombre.trim() !== '') { // Se agrega un chequeo para evitar que se busquen espacios vacíos
+            productos = yield producto_1.default.findAll({
+                where: {
+                    nombre: {
+                        [sequelize_1.Op.like]: '%' + nombre.trim() + '%'
+                    }
                 }
-            }
-        });
+            });
+        }
+        else {
+            productos = yield producto_1.default.findAll();
+        }
         res.json(productos);
     }
     catch (error) {

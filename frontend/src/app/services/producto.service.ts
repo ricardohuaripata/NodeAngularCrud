@@ -43,4 +43,8 @@ export class ProductoService {
   }
 
 
+  getListProductsByName(nombre: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(this.serverUrl + this.apiUrl + 'name/like/' + nombre);
+  }
+
 }

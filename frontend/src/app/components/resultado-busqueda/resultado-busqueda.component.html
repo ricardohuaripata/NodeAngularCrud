@@ -1,0 +1,42 @@
+<!-- SI AUN ESTA CARGANDO -->
+<app-progress-bar *ngIf="loading==true"></app-progress-bar>
+
+<!-- SI YA NO ESTA CARGANDO -->
+<div *ngIf="loading==false" class="container">
+    
+    <div class="titulo">
+        <h4>Resultados de búsqueda</h4>
+        <h4>{{ '(' + resultadoListaProductos.length + ') resultados'}} </h4>
+    </div>
+
+    <div class="table-responsive">
+
+      <table *ngIf="resultadoListaProductos.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Existencias</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let item of resultadoListaProductos" class="table-active">
+            <td>{{ item.id }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.precio | currency }}</td>
+            <td>{{ item.existencias }}</td>
+            
+          </tr>
+
+        </tbody>
+      </table>
+
+      <h5 *ngIf="resultadoListaProductos.length == 0">No se ha encontrado ningún resultado</h5>
+    </div>
+
+</div>

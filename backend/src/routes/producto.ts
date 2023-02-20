@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', getProductos),
 router.get('/:id', getProducto),
-router.get('/namelike/:nombre', getProductosByName),
+router.get('/name/like/:nombre?', getProductosByName),
 router.delete('/:id', deleteProducto),
 router.post('/', postProducto),
 router.put('/:id', putProducto)

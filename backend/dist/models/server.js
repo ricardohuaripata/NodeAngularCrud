@@ -16,7 +16,11 @@ const express_1 = __importDefault(require("express"));
 //importante usar cors para la conexion con el frontend
 const cors_1 = __importDefault(require("cors"));
 const producto_1 = __importDefault(require("../routes/producto"));
+const usuario_1 = __importDefault(require("../routes/usuario"));
 const connection_1 = __importDefault(require("../database/connection"));
+const dotenv_1 = __importDefault(require("dotenv"));
+//configurar variables de entorno
+dotenv_1.default.config();
 class Server {
     constructor() {
         // todas las funcionas definidas para esta clase deberan llamarse en su constructor,
@@ -45,6 +49,7 @@ class Server {
         // localhost:3000/api/productos
         // si se accede a esa ruta, se llama a la clase routerProducto, la cual contiene otras rutas para get,post,delete y put
         this.app.use('/api/productos', producto_1.default);
+        this.app.use('/api/usuarios', usuario_1.default);
     }
     midlewares() {
         // PARSEAR EL BODY EN JSON
@@ -56,6 +61,8 @@ class Server {
     dbConexion() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                // sync, crea la tabla si no existe
+                //await Usuario.sync();
                 yield connection_1.default.authenticate();
                 console.log("Base de datos conectada :)");
             }

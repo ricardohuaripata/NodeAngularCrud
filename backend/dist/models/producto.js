@@ -18,9 +18,12 @@ const Producto = connection_1.default.define('Producto', {
     existencias: {
         type: sequelize_1.DataTypes.NUMBER,
     }
-    //IMPORTANTE asignar estos 2 atributos a false
 }, {
+    // SEQUELIZE POR DEFECTO TRAE LOS CAMPOS `id`, `createdAt`, `updatedAt`
+    // SI NO QUEREMOS LOS CAMPOS `createdAt`, `updatedAt`, HAY QUE ASIGNARLOS A 'false'
     createdAt: false,
-    updatedAt: false
+    updatedAt: false,
+    //nombre tabla Productos
+    tableName: 'Productos'
 });
 exports.default = Producto;

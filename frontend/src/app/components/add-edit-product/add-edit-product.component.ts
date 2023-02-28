@@ -54,9 +54,9 @@ export class AddEditProductComponent implements OnInit{
           precio: data.precio,
           existencias:  data.existencias
         })
-      });
+        this.loading = false;
 
-      this.loading = false;
+      });
 
     }, 500);
 

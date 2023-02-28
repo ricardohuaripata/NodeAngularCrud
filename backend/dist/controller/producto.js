@@ -15,12 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.putProducto = exports.postProducto = exports.deleteProducto = exports.getProductosByName = exports.getProducto = exports.getProductos = void 0;
 const producto_1 = __importDefault(require("../models/producto"));
 const sequelize_1 = require("sequelize");
+// GET
 const getProductos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const listaProductos = yield producto_1.default.findAll();
     // {listaProductos} :(
     res.json(listaProductos);
 });
 exports.getProductos = getProductos;
+// GET BY ID
 const getProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const product = yield producto_1.default.findByPk(id);
@@ -32,6 +34,7 @@ const getProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getProducto = getProducto;
+// GET BY NAME
 const getProductosByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let nombre = req.params.nombre || ''; //  si se llama la ruta sin proporcionar un nombre, el valor por defecto sera una cadena vacia
     const esNombreValido = /^[a-zA-Z0-9\s]+$/.test(nombre.trim()); // expresión regular para validar que nombre solo contiene letras, números y espacios
@@ -56,6 +59,7 @@ const getProductosByName = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.getProductosByName = getProductosByName;
+// DELETE
 const deleteProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const product = yield producto_1.default.findByPk(id);
@@ -68,6 +72,7 @@ const deleteProducto = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.deleteProducto = deleteProducto;
+// POST
 const postProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     try {
@@ -79,6 +84,7 @@ const postProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.postProducto = postProducto;
+// PUT
 const putProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     const id = req.params.id;

@@ -14,10 +14,13 @@ const Producto = database.define('Producto', {
     existencias: {
         type: DataTypes.NUMBER,
     }
-//IMPORTANTE asignar estos 2 atributos a false
 }, {
+    // SEQUELIZE POR DEFECTO TRAE LOS CAMPOS `id`, `createdAt`, `updatedAt`
+    // SI NO QUEREMOS LOS CAMPOS `createdAt`, `updatedAt`, HAY QUE ASIGNARLOS A 'false'
     createdAt: false,
-    updatedAt: false
+    updatedAt: false,
+    //nombre tabla Productos
+    tableName: 'Productos'
 } );
 
 export default Producto;

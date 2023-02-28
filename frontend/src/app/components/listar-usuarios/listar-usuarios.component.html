@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+
+<!-- SI AUN ESTA CARGANDO -->
+<app-progress-bar *ngIf="loading==true"></app-progress-bar>
+
+<!-- SI YA NO ESTA CARGANDO -->
+<div *ngIf="loading==false" class="container">
+    
+    <div class="titulo">
+        <h4>Lista de usuarios</h4>
+    </div>
+
+    <div class="table-responsive">
+
+      <table *ngIf="listaUsuarios.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let item of listaUsuarios" class="table-active">
+            <td>{{ item.id }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.firstname }}</td>
+            <td>{{ item.lastname }}</td>
+            <td>{{ item.email }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <!-- SI NO HAY NINGUN ELEMENTO EN LA LISTA DE PRODUCTOS -->
+      <h5 *ngIf="listaUsuarios.length == 0">No hay usuarios para mostrar</h5>
+    </div>
+
+</div>

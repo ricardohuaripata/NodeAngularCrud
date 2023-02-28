@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //Modulos
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // modulo necesario para la conexion con el backend
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // modulo para toastr
 import { ToastrModule } from 'ngx-toastr';
 
@@ -20,6 +20,10 @@ import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/p
 import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.component';
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
 import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resultado-busqueda.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +35,15 @@ import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resu
     PaginaInicioComponent,
     ProgressBarComponent,
     ResultadoBusquedaComponent,
+    LoginComponent,
+    SignUpComponent,
+    ListarUsuariosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     // modulo necesario para la conexion con el backend
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
@@ -46,7 +54,10 @@ import { ResultadoBusquedaComponent } from './components/resultado-busqueda/resu
       preventDuplicates: true,
     }),
   ],
-  providers: [],
+  providers: [
+    // interceptor token
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

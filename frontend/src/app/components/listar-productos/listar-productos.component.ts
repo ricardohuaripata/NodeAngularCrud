@@ -15,7 +15,9 @@ export class ListarProductosComponent implements OnInit {
   // BARRA DE CARGA
   loading: boolean = false;
 
-  constructor(private _productoService: ProductoService, private toastr: ToastrService) {}
+  constructor(private _productoService: ProductoService, private toastr: ToastrService) {
+    
+  }
 
   // funcion que se ejecuta al iniciar el componente
   ngOnInit(): void {

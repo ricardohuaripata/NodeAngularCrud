@@ -3,7 +3,12 @@ import express, {Request, Response} from 'express';
 //importante usar cors para la conexion con el frontend
 import cors from 'cors';
 import routerProducto from '../routes/producto';
+import routerUsuario from '../routes/usuario';
 import database from '../database/connection';
+import dotenv from 'dotenv';
+
+//configurar variables de entorno
+dotenv.config();
 
 class Server {
 
@@ -38,6 +43,8 @@ class Server {
         // localhost:3000/api/productos
         // si se accede a esa ruta, se llama a la clase routerProducto, la cual contiene otras rutas para get,post,delete y put
         this.app.use('/api/productos', routerProducto);
+        this.app.use('/api/usuarios', routerUsuario);
+
     }
 
 
@@ -53,6 +60,8 @@ class Server {
     async dbConexion() {
 
         try {
+            // sync, crea la tabla si no existe
+            //await Usuario.sync();
             await database.authenticate();
             console.log("Base de datos conectada :)");
 

@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../interfaces/producto';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +17,15 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {
     // URL del servidor backend
-    this.serverUrl = 'http://localhost:3000/';
+    this.serverUrl = environment.serverURL;
     this.apiUrl = 'api/productos/';
   }
 
   getListProducts(): Observable<Producto[]> {
+    /*
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    */
     return this.http.get<Producto[]>(this.serverUrl + this.apiUrl);
   }
 

@@ -1,7 +1,7 @@
 # node-angular-crud
 
-CRUD WEB APP
+Frontend: Angular 15
 
-FRONTEND: Angular
+Backend: Node, Express, Typescript, Sequelize, MySQL
 
-BACKEND: Node, Express, Typescript, Sequelize, MySQL
+API: http://nodeangularcrud-env.eba-mpkteidu.us-west-2.elasticbeanstalk.com/

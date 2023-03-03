@@ -1,7 +1,4 @@
-Frontend: Angular
-Backend: Node, Express, Typescript, Sequelize, MySQL
-
-
+Apuntes
 
 instalar nodemon de manera globlal: npm install -g nodemon
 

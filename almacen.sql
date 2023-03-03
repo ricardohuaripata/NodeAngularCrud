@@ -81,9 +81,6 @@ CREATE TABLE Usuarios (
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO Usuarios (username, password, firstname, lastname, email)
-VALUES ('ricardohuaripata', 'ricardohuaripata', 'Ricardo', 'Huaripata Bellido', 'ricardohuaripatabellido@gmail.com');
-
 select * from almacen.Usuarios;
 
 use almacen;

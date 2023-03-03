@@ -16,10 +16,13 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
             <th scope="col">Email</th>
+            <th scope="col">Fecha de creación</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -27,14 +30,16 @@
           <tr *ngFor="let item of listaUsuarios" class="table-active">
             <td>{{ item.id }}</td>
             <td>{{ item.username }}</td>
+            <td>{{ item.password }}</td>
             <td>{{ item.firstname }}</td>
             <td>{{ item.lastname }}</td>
             <td>{{ item.email }}</td>
+            <td>{{ item.createdAt }}</td>
           </tr>
 
         </tbody>
       </table>
-      <!-- SI NO HAY NINGUN ELEMENTO EN LA LISTA DE PRODUCTOS -->
+      <!-- SI NO HAY NINGUN ELEMENTO EN LA LISTA DE USUARIOS -->
       <h5 *ngIf="listaUsuarios.length == 0">No hay usuarios para mostrar</h5>
     </div>
 

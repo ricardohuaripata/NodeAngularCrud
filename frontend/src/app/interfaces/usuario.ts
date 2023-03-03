@@ -1,3 +1,4 @@
+
 export interface Usuario {
     id?: number;
     username: string;
@@ -5,5 +6,6 @@ export interface Usuario {
     firstname?: string;
     lastname?: string;
     email?: string;
+    createdAt?: Date;
 
 }

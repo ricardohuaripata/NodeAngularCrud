@@ -81,8 +81,18 @@ CREATE TABLE Usuarios (
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-select * from almacen.Usuarios;
+INSERT INTO `Usuarios` VALUES 
+(1,'ricardohb','$2b$10$HzuAO6sinSY/3Z4/mJ0l0Ov2L9tdVqEm5VlxeD32ggqqRLzhls0dO','Ricardo','Huaripata','ricardohb@gmail.com','2023-03-03 20:24:23','2023-03-03 20:24:23'),
+(2,'gregory166','$2b$10$aQ1NCZwCmwlMJtg7fVjmRezkPBCv8UD/uYDWGolxVTSNy.RYjZAcC','Gregory','Smith','gregory166@gmail.com','2023-03-03 20:26:12','2023-03-03 20:26:12'),
+(3,'java','$2b$10$FSa4lj6Qi.O5t8dppxDH4.Ed8vjBN0QukACQtGkC0sE0TsjFX4bfO','java','java','java@gmail.com','2023-03-03 20:27:11','2023-03-03 20:27:11'),
+(4,'angular','$2b$10$Hx1/ilokhOlgUlIy71fWBOjcCiXL1a96KyuW4XpCbjpkdEoacfiTq','angular','angular','angular@gmail.com','2023-03-03 20:28:22','2023-03-03 20:28:22'),
+(5,'jgfjfgdfdgs','$2b$10$MCoxxhOYY1SsnrvVZOcWNueJwnNURnrlXg7RHBAmycvLi/t75NNv.','sdsd','sdsd','dssdsdda','2023-03-04 01:19:29','2023-03-04 01:19:29'),
+(6,'rrrr','$2b$10$bD5foJUVZZ4URB52aSFMfeOCTuRLaBEwGoA/sRHfRWXt98Rj2PYdy','rrrr','rrrr','rrrr','2023-03-07 18:06:59','2023-03-07 18:06:59'),
+(7,'wwww','$2b$10$A2wzLMhpKb4wOzA7NNcOceurTfXMM9IdtdGpXT/eooRTs1LKt7sfC','wwww','wwww','wwww','2023-03-07 18:32:14','2023-03-07 18:32:14');
 
+
+select * from almacen.Usuarios;
+select * from Usuarios where username = 'ricardohb';
 use almacen;
 
 drop table almacen.Usuarios;

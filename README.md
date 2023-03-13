@@ -1,9 +1,5 @@
 # node-angular-crud
 
-![](screenshots/login.png)
-
-![](screenshots/registro.png)
-
 ![](screenshots/login-error.png)
 
 ![](screenshots/registro-error.png)
